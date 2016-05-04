@@ -8,7 +8,7 @@ Two main windows and one login/out/changepassword/checkin windows.
 Multiuser feature
 Using Material design package
 Database is on db4free.org
-* Open notebookQ/bin/Releease/notebook.exe to use.
+* Open notebookQ/bin/Release/notebook.exe to use.
 * It may run slowly due to the bad connection with the database.
 
 ### Personal Info
