@@ -1,0 +1,84 @@
+﻿<Window x:Class="notebookQ.Schedule"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:notebookQ"
+         xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d"
+        Title="Schedule" Width="360"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+         Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}"
+        TextElement.FontWeight="Medium"
+        TextElement.FontSize="14"
+        
+    FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto" WindowStartupLocation="CenterOwner" Height="700" WindowStyle="ToolWindow" Margin="5">
+    
+    <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="665*"/>
+
+
+        </Grid.RowDefinitions>
+        <!--spliter-->
+
+     
+        <Border Grid.Row="1" BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="664" Grid.RowSpan="1" VerticalAlignment="Top" Width="342" Margin="0,3,0,-2">
+            <Grid Margin="0,0,-1,0">
+                <Grid.RowDefinitions>
+
+                    <RowDefinition Height="157*"/>
+                    <RowDefinition Height="5"/>
+                    <RowDefinition Height="169*"/>
+
+                </Grid.RowDefinitions>
+                <GridSplitter Grid.Row="1" HorizontalAlignment="Stretch"  Background="{DynamicResource {x:Static SystemColors.ActiveCaptionBrushKey}}" HorizontalContentAlignment="Stretch" ScrollViewer.VerticalScrollBarVisibility="Auto" />
+                <ListBox Name="slist" Grid.Row="0" Background="{DynamicResource {x:Static SystemColors.ControlLightBrushKey}}" Margin="0" >
+                    <ListBox.ItemContainerStyle>
+                        <Style TargetType="ListBoxItem" BasedOn="{StaticResource {x:Type ListBoxItem}}">
+                            <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                        </Style>
+                    </ListBox.ItemContainerStyle>
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+
+                            <StackPanel Uid="{Binding UID}" Name="listsp"  HorizontalAlignment="Stretch" Background="{DynamicResource {x:Static SystemColors.InactiveCaptionBrushKey}}" Width="300" ScrollViewer.VerticalScrollBarVisibility ="Auto" PreviewMouseDown="listsp_PreviewMouseDown">
+                                <StackPanel.ContextMenu>
+                                    <ContextMenu>
+                                        <MenuItem Header="Delete" Click="MenuItem_Click">
+
+                                        </MenuItem>
+                                    </ContextMenu>
+                                </StackPanel.ContextMenu>
+                                <CheckBox Content="" IsChecked="{Binding butfunc}" Checked="CheckBox_Checked_1" Unchecked="CheckBox_Unchecked"  />
+                                <TextBlock Text="{Binding Time}" FontSize="14" HorizontalAlignment="Stretch" Foreground="#FF767575" />
+                                <TextBlock Text="{Binding Content}" FontSize="16" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+                <StackPanel Grid.Row="2" >
+                    
+                    <DatePicker Name="Dates"/>
+                    <materialDesign:TimePicker Name="Times"/>
+                    <materialDesign:Card Name="card" HorizontalAlignment="Stretch" Height="314" Background="{DynamicResource {x:Static SystemColors.InactiveCaptionBrushKey}}">
+                        <materialDesign:Card.Content>
+                            <StackPanel >
+                                <TextBlock />
+                              <TextBlock Text="Content:" FontSize="20" TextAlignment="Center" />
+                                <TextBox Name="content" AcceptsReturn="True" HorizontalAlignment="Stretch" ScrollViewer.VerticalScrollBarVisibility="Auto" Height="86" />
+                                <TextBlock Text="" Height="28" />
+                                <TextBlock Text="Place:" FontSize="20" TextAlignment="Center" />
+                                <TextBox Name="place"   HorizontalAlignment="Stretch" ScrollViewer.VerticalScrollBarVisibility="Auto" Height="42"/>
+                                <TextBlock Height="24" />
+                                <Button x:Name="update" Content="Create" HorizontalAlignment="Stretch" FontSize="22" Click="update_Click" />
+                            </StackPanel>
+                            
+                            
+                        </materialDesign:Card.Content>
+                    </materialDesign:Card>
+                </StackPanel>
+            </Grid>
+        </Border>
+
+    </Grid>
+</Window>

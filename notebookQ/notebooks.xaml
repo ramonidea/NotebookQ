@@ -1,0 +1,159 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:notebookQ"
+         xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" x:Class="notebookQ.notebooks"
+        Title="notebooks" Width="350"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+         Background="{DynamicResource {x:Static SystemColors.InactiveSelectionHighlightBrushKey}}"
+        TextElement.FontWeight="Medium"
+        TextElement.FontSize="14"
+    FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto" WindowStartupLocation="CenterOwner" Height="700" Icon="notebook11.png" >
+    <Window.Resources>
+
+
+        <SolidColorBrush x:Key="TabControlNormalBorderBrush" Color="#8C8E94"/>
+        <Style x:Key="TabControlStyle1" TargetType="{x:Type TabControl}">
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+            <Setter Property="Padding" Value="4,4,4,4"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="BorderBrush" Value="{StaticResource TabControlNormalBorderBrush}"/>
+            <Setter Property="Background" Value="#F9F9F9"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="TabControl">
+                        <DockPanel>
+                            <ScrollViewer DockPanel.Dock="Top"
+                HorizontalScrollBarVisibility="Auto"
+                VerticalScrollBarVisibility="Disabled">
+                                <StackPanel Orientation="Horizontal" IsItemsHost="True" />
+                            </ScrollViewer>
+                            <Border x:Name="ContentPanel" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" Grid.Column="0" KeyboardNavigation.DirectionalNavigation="Contained" Grid.Row="1" KeyboardNavigation.TabIndex="2" KeyboardNavigation.TabNavigation="Local">
+                                <ContentPresenter x:Name="PART_SelectedContentHost" ContentSource="SelectedContent" Margin="{TemplateBinding Padding}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+                            </Border>
+                        </DockPanel>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+
+
+    </Window.Resources>
+
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="75*"/>
+            <ColumnDefinition Width="43*"/>
+            <ColumnDefinition Width="53*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="34"/>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="197*" />
+            <RowDefinition Height="7" />
+            <RowDefinition Height="187*"/>
+            <RowDefinition Height="20"/>
+        </Grid.RowDefinitions>
+
+        <!--Title-->
+        <StackPanel Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="3" Background="{DynamicResource {x:Static SystemColors.InactiveCaptionBrushKey}}"  HorizontalAlignment="Stretch"  >
+            <Button Content="Title" x:Name="tbtitle" FontSize="20" VerticalAlignment="Center" Margin ="0,0,147.167,0" BorderThickness="0" Height="34.77"/>
+        </StackPanel>
+        <!--User-->
+        <StackPanel Grid.Column="2" Grid.Row="0">
+            <Button  Content="NewUser" x:Name="tbuser" VerticalAlignment="Center" HorizontalAlignment="Center" Height="33.77" Width="106"  Click="tbuser_Click" Background="#FF9A79D4" BorderThickness="0" Panel.ZIndex="100">
+                <Button.ContextMenu>
+                    <ContextMenu x:Name="tbuser_menu">
+                        <MenuItem x:Name="user_right_login" Header="log in" Click="user_right_login_Click"  />
+
+
+                    </ContextMenu>
+                </Button.ContextMenu>
+
+            </Button>
+        </StackPanel>
+        <!--menu-->
+
+        <DockPanel Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Left" Height="35"  Background="{DynamicResource {x:Static SystemColors.ActiveCaptionBrushKey}}" Width="{DynamicResource {x:Static SystemParameters.VirtualScreenWidthKey}}">
+            <DockPanel.Resources>
+                <Style TargetType="{x:Type TextBox}">
+                    <Setter Property="Margin" Value="0,10,0,0"/>
+                </Style>
+            </DockPanel.Resources>
+            <Menu VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="{DynamicResource {x:Static SystemColors.ActiveCaptionBrushKey}}">
+
+
+                <MenuItem Header="_Notebook" VerticalAlignment="Center" FontSize="15" Height="24" Margin="0,0,0,0" Background="{DynamicResource {x:Static SystemColors.ActiveCaptionBrushKey}}">
+                    <MenuItem Header="_New" HorizontalAlignment="Center" VerticalAlignment="Center" Width="136" Height="32" Click="MenuItem_Click_1"  >
+                        <MenuItem.Icon>
+                            <Path Data="M14,10H19.5L14,4.5V10M5,3H15L21,9V19A2,2 0 0,1 19,21H5C3.89,21 3,20.1 3,19V5C3,3.89 3.89,3 5,3M9,18H11V15H14V13H11V10H9V13H6V15H9V18Z" Fill="Black" Margin="0,0,0,-4" Stretch="Fill" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+
+
+
+                    <Separator />
+                    <MenuItem Header="_Exit" HorizontalAlignment="Center" VerticalAlignment="Center" Click="MenuItem_Click_2"   >
+                        <MenuItem.Icon>
+                            <Path Data="M18,6H16V15C16,16 15.82,16.64 15,16.95L9.5,19V6C9.5,5.3 9.74,4.1 11,4.24L18,5V3.79L9,2.11C8.64,2.04 8.36,2 8,2C6.72,2 6,2.78 6,4V20.37C6,21.95 7.37,22.26 8,22L17,18.32C18,17.91 18,17 18,16V6Z" Fill="Black" Margin="0,0,-4,0" Stretch="Fill" />
+
+                        </MenuItem.Icon>
+                    </MenuItem>
+                </MenuItem>
+
+
+                <MenuItem Header="_Schedule" VerticalAlignment="Center" FontSize="15" Height="25" Background="{DynamicResource {x:Static SystemColors.ActiveCaptionBrushKey}}">
+                    <MenuItem Header="_Open Panel" Click="MenuItem_Click" Height="34" >
+                        <MenuItem.Icon>
+                            <materialDesign:PackIcon Kind="OpenInApp" Height="33" Width="24" Margin="0,-9,0,-8" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                </MenuItem>
+            </Menu>
+        </DockPanel>
+
+        <!--tree view-->
+        <TreeView Grid.Column="0" MouseRightButtonDown="TreeViewItem_MouseRightButtonDown"  Grid.ColumnSpan="3" Grid.Row="2" x:Name="tvNotebooks" VerticalAlignment="Stretch" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" AllowDrop="True" MouseDown="tvNotebooks_MouseDown" MouseMove="tvNotebooks_MouseMove" DragOver="tvNotebooks_DragOver" Drop="tvNotebooks_Drop" />
+
+        <!--spliter-->
+        <GridSplitter HorizontalAlignment="Stretch" Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="3" Background="{DynamicResource {x:Static SystemColors.ActiveCaptionBrushKey}}"/>
+        <!--edit area-->
+        <DockPanel  x:Name="spedit" Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="4" Grid.RowSpan="1">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <ToolBarPanel Grid.Row="0" Height="0" Grid.RowSpan="2" VerticalAlignment="Top" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin" >
+
+                </ToolBarPanel>
+
+                <TabControl Grid.Row="1" Name="tcedit"  Style="{DynamicResource TabControlStyle1}" VerticalAlignment="Bottom" Margin="0,0,0,-269.721" Height="269.721" d:LayoutOverrides="LeftMargin, RightMargin"   >
+                    <TabItem  Content="" Uid="add" Width="23.733" Height="20" Margin="0" Padding="0" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" MouseLeftButtonDown="TabItem_MouseLeftButtonDown" FontSize="20" >
+                        <TabItem.Header>
+                            <TextBlock Text="+" />
+                        </TabItem.Header>
+                    </TabItem>
+
+
+
+
+                </TabControl>
+
+            </Grid>
+
+        </DockPanel>
+        <Button x:Name="notechangesButton" Content="Apply Changes" Margin="0" Grid.Row="5" VerticalAlignment="Top" Grid.ColumnSpan="3" Height="20" FontSize="12" IsEnabled="False" Click="notechangesButton_Click"/>
+
+
+
+
+
+    </Grid>
+</Window>
